@@ -1,72 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-
-model Company {
-  id       String   @id @default(uuid())
-  userId   String
-  name     String @db.Text
-  description String? @db.Text
-  profileImage String @db.Text
-  cif      String @db.Text
-  phone   String @db.Text
-  country String @db.Text
-  website String @db.Text
-
-  contacts Contact[]
+model Task {
+  id          String   @id @default(uuid())
+  userId      String
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   events Event[]
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
-
-}
-
-
-model Contact{
-  id       String   @id @default(uuid())
-  companyId String? @db.Text
-  name     String @db.Text
-  role     String @db.Text
-  email    String @db.Text
-  phone    String @db.Text
-  
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
-
-  company Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
-
-  @@index([companyId])
 }
 
 model Event {
-  id       String   @id @default(uuid())
-  userId   String
-  companyId String
-  title    String 
+  id          String @id @default(uuid()) 
+  userId      String
+  title       String
+  description String?
+  taskId      String
   start    DateTime
   allDay   Boolean
   timeFormat String
   
-  company Company @relation(fields: [companyId], references: [id])
+  task        Task   @relation(fields: [taskId], references: [id])
 
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
-
-  @@index([companyId])
-
-  
 }
-
-

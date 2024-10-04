@@ -16,12 +16,12 @@ export function FooterCompany(props: FooterCompanyProps) {
         try {
             axios.delete(`/api/company/${companyId}`);
             toast({
-                title: "Compañia eliminada",
+                title: "Task deleteddd",
             }) 
             router.push("/companies");
         } catch (error) {
             toast({
-                title: "Ocurrio un error",
+                title: "Error deleting task",
                 variant: "destructive"
             })
         }
@@ -31,7 +31,7 @@ export function FooterCompany(props: FooterCompanyProps) {
     <div className="flex justify-end mt-5">
         <Button variant="destructive" onClick={onDeleteCompany}>
             <Trash className="w-4 h-4 mr-2"/>
-            Eliminar compañia
+            Delete
         </Button>
     </div>
   )

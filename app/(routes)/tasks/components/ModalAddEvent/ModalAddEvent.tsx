@@ -11,7 +11,7 @@ import { ModalAddEventProps } from "./ModalAddEvent.types";
 import { FormEvent } from "../FormEvent";
 
 export function ModalAddEvent(props: ModalAddEventProps) {
-  const { open, companies, setNewEvent, setOnSaveNewEvent, setOpen } = props;
+  const { open, tasks, setNewEvent,  setOnSaveNewEvent, setOpen } = props;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-[425px]">
@@ -20,9 +20,9 @@ export function ModalAddEvent(props: ModalAddEventProps) {
         </DialogHeader>
         <FormEvent
           setOnSaveNewEvent={setOnSaveNewEvent}
-          companies={companies}
-          setNewEvent={setNewEvent}
+          tasks={tasks}
           setOpen={setOpen}
+          setNewEvent={setNewEvent}
         />
       </DialogContent>
     </Dialog>

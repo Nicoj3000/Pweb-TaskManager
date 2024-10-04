@@ -9,7 +9,7 @@ export function Logo() {
       onClick={() => router.push("/")}
     >
       <Image src="/logo.svg" alt="Logo" width={30} height={30} priority />
-      <h1 className="font-bold text-xl">LifeManager</h1>
+      <h1 className="font-bold text-xl">TaskManager</h1>
     </div>
   );
 }

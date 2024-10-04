@@ -1,10 +1,11 @@
-import { Company, Event as PrismaEvent } from "@prisma/client";
+import { Task, Event as PrismaEvent } from "@prisma/client";
 
 export type Event = PrismaEvent & {
-  company: Company;
+  task: Task; // Asegúrate de que la propiedad 'task' esté en minúscula para coincidir con el uso en el componente
 };
 
 export type CalendarProps = {
-  companies: Company[];
-  events: Event[];
+  tasks: Task[]; // Lista de tareas
+  events: Event[]; // Lista de eventos que incluyen la relación con las tareas
+  
 };

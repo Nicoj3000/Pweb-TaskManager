@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", {status: 401});
     }
 
-    const company = await db.company.create({
+    const company = await db.task.create({
       data: {
         ...data,
         userId,

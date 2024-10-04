@@ -1,15 +1,16 @@
-import { Company } from "@prisma/client";
+import { Task } from "@prisma/client";
 import { Dispatch, SetStateAction } from "react";
 
 export type ModalAddEventProps = {
-  open: boolean,
-  setOpen: Dispatch<SetStateAction<boolean>>
-  setOnSaveNewEvent: Dispatch<SetStateAction<boolean>>,
-  companies: Company[]
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setOnSaveNewEvent: Dispatch<SetStateAction<boolean>>;
+  tasks: Task[];
   setNewEvent: Dispatch<
     SetStateAction<{
       eventName: string;
-      companieSelected: { name: string; id: string };
+      taskSelected: { name: string; id: string };
+      description: string;
     }>
   >;
 };

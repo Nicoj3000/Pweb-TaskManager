@@ -2,51 +2,54 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req: Request, { params }: { params: { contactId: string } }) {
+export async function PATCH(req: Request, { params }: { params: { taskId: string } }) {
   try {
     const { userId } = auth();
-    const { contactId } = params;
+    const { taskId } = params;
     const values = await req.json();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const contact = await db.contact.update({
+    const task = await db.task.update({
       where: {
-        id: contactId,
-        
+        id: taskId,
+        userId,
       },
       data: {
-        ...values,
+        title: values.title,
+        description: values.description,
       },
     });
 
-    return NextResponse.json(contact);
+    return NextResponse.json(task);
+
   } catch (error) {
-    console.log("[CONTACT ID]", error);
+    console.log("[TASK ID]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { contactId: string } }) {
+export async function DELETE(req: Request, { params }: { params: { taskId: string } }) {
   try {
     const { userId } = auth();
-    const { contactId } = params;
+    const { taskId } = params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const deleteContact = await db.contact.delete({
+    const deleteCompany = await db.task.delete({
       where: {
-        id: contactId,
+        id: taskId,
       },
     });
 
-    return NextResponse.json(deleteContact);
+    return NextResponse.json(deleteCompany);
+    
   } catch (error) {
-    console.log("[CONTACT ID]", error);
+    console.log("[COMPANY ID]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

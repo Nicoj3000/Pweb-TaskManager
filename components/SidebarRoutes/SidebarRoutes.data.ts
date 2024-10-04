@@ -11,13 +11,13 @@ import {
 export const dataGeneralSidebar = [
   {
     icon: PanelsTopLeft,
-    label: "Dashboard",
+    label: "Chat with AI",
     href: "/",
   },
 
   {
     icon: Building2,
-    label: "Companies",
+    label: "Tasks",
     href: "/companies",
   },
 
@@ -41,15 +41,3 @@ export const dataToolsSidebar = [
   },
 ];
 
-export const dataSupportSidebar = [
-  {
-    icon: Settings,
-    label: "Settings",
-    href: "/settings",
-  },
-  {
-    icon: ShieldCheck,
-    label: "Security",
-    href: "/security",
-  },
-];

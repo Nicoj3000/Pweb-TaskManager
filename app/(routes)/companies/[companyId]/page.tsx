@@ -15,7 +15,7 @@ export default async function CompanyIdPage({params}: {params: {companyId: strin
         
     }
 
-    const company = await db.company.findUnique({
+    const company = await db.task.findUnique({
         where: {
             id: params.companyId,
             userId

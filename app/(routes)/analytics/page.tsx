@@ -10,7 +10,7 @@ export default async function pageAnautics() {
     return redirect("/");
   }
 
-  const companies = await db.company.findMany({
+  const companies = await db.task.findMany({
     where: {
       userId,
     },

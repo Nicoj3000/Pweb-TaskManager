@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -30,45 +30,55 @@ import { FormEventProps } from "./FormEvent.types";
 
 const formSchema = z.object({
   eventName: z.string().min(2),
-  companieSelected: z.object({
+  taskSelected: z.object({
     name: z.string().min(2),
     id: z.string(),
   }),
+  description: z.string().nullable(),
 });
 
 export function FormEvent(props: FormEventProps) {
-  const { companies, setNewEvent, setOnSaveNewEvent, setOpen } = props;
-  const [selectedCompany, setSelectedCompany] = useState({
+  const { tasks, setNewEvent, setOnSaveNewEvent, setOpen } = props;
+  const [selectedTask, setselectedTask] = useState({
     name: "",
     id: "",
   });
+
+  useEffect(() => {
+    console.log("Tasks received:", tasks);
+  }, [tasks]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       eventName: "",
-      companieSelected: {
+      taskSelected: {
         name: "",
         id: "",
       },
+      description: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setNewEvent(values);
+    setNewEvent({
+      eventName: values.eventName,
+      taskSelected: values.taskSelected,
+      description: values.description || "",
+    });
     setOpen(false);
     setOnSaveNewEvent(true);
   }
 
-  const handleCompanyChange = (newValue: string) => {
-    const selectedCompany = companies.find(company => company.name === newValue);
-    if (selectedCompany) {
-      setSelectedCompany({
-        name: selectedCompany.name,
-        id: selectedCompany.id,
+  const handleTaskChange = (newValue: string) => {
+    const selectedTask = tasks.find((tasks) => tasks.title === newValue);
+    if (selectedTask) {
+      setselectedTask({
+        name: selectedTask.title,
+        id: selectedTask.id,
       });
-      form.setValue("companieSelected.name", selectedCompany.name);
-      form.setValue("companieSelected.id", selectedCompany.id);
+      form.setValue("taskSelected.name", selectedTask.title);
+      form.setValue("taskSelected.id", selectedTask.id);
     }
   };
 
@@ -91,28 +101,46 @@ export function FormEvent(props: FormEventProps) {
 
         <FormField
           control={form.control}
-          name="companieSelected.name"
+          name="taskSelected.name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Company name</FormLabel>
-              <Select onValueChange={(newValue) => {
-                  field.onChange(newValue)
-                  handleCompanyChange(newValue)
-                }} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a company"/>
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {companies.map((companie) => (
-                      <SelectItem key={companie.id} value={companie.name}>
-                        {companie.name}
+              <FormLabel>Task name</FormLabel>
+              <Select
+                onValueChange={(newValue) => {
+                  field.onChange(newValue);
+                  handleTaskChange(newValue);
+                }}
+                defaultValue={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a tasks" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {tasks &&
+                    tasks.map((tasks) => (
+                      <SelectItem key={tasks.id} value={tasks.title}>
+                        {tasks.title}
                       </SelectItem>
                     ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Description..." {...field} value={field.value ?? ""} />
+              </FormControl>
+              <FormDescription>This is your event description.</FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />

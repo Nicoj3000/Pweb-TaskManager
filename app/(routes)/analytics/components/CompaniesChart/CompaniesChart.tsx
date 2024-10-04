@@ -60,12 +60,12 @@ export function CompaniesChart(props: CompaniesChartProps) {
 
   const dataChart = companies.map((company) => ({
     name:
-      company.name.length > 10
-        ? company.name.slice(0, 10) + "..."
-        : company.name,
-    eventsByCompany: events.filter((event) => event.companyId === company.id)
+      company.title.length > 10
+        ? company.title.slice(0, 10) + "..."
+        : company.title,
+    eventsByCompany: events.filter((event) => event.taskId === company.id)
       .length,
-    events: events.filter((event) => event.companyId === company.id),
+    events: events.filter((event) => event.taskId === company.id),
   }));
 
   return (

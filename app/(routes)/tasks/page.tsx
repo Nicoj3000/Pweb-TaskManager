@@ -3,14 +3,14 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { Calendar } from "./components/Calendar";
 
-export default async function Taskspage({ params }: { params: { companyId: string } }) {
+export default async function Taskspage({ params }: { params: { taskId: string } }) {
   const { userId } = auth();
 
   if (!userId) {
     return redirect("/");
   }
 
-  const companies = await db.company.findMany({
+  const companies = await db.task.findMany({
     where: {
       userId,
     },
@@ -19,20 +19,22 @@ export default async function Taskspage({ params }: { params: { companyId: strin
     },
   });
 
-  const events = await db.event.findMany({
+  const events = (await db.event.findMany({
     where: {
-      companyId: params.companyId,
+      taskId: params.taskId,
       userId
-      
     },
     include: {
-      company: true, // Incluir la relación con la empresa
+      task: true, // Incluir la relación con la empresa
     },
-  });
+  })).map(event => ({
+    ...event,
+    Task: event.task
+  }));
 
   return (
     <div>
-      <Calendar companies={companies} events={events} />
+      <Calendar tasks={companies} events={events} />
     </div>
   );
 }

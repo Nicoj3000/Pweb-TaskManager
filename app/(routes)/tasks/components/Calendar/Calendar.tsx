@@ -20,17 +20,18 @@ import { ModalAddEvent } from "../ModalAddEvent";
 import { toast } from "@/components/ui/use-toast";
 
 export function Calendar(props: CalendarProps) {
-  const { companies, events } = props;
+  const { tasks,  events } = props;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [onSaveNewEvent, setOnSaveNewEvent] = useState(false);
   const [selectedItem, setSelectedItem] = useState<DateSelectArg>();
   const [newEvent, setNewEvent] = useState({
     eventName: "",
-    companieSelected: {
+    taskSelected: {
       name: "",
       id: "",
     },
+    description: "",
   });
 
   const handleDateClick = async (selected: DateSelectArg) => {
@@ -42,46 +43,49 @@ export function Calendar(props: CalendarProps) {
     if (onSaveNewEvent && selectedItem?.view.calendar) {
       const calendarApi = selectedItem.view.calendar;
       calendarApi.unselect();
-
+  
       const newEventPrisma = {
-        companyId: newEvent.companieSelected.id,
+        taskId: newEvent.taskSelected.id,
         title: newEvent.eventName,
         start: new Date(selectedItem.start),
         allDay: false,
         timeFormat: "H(:mm)",
+        description: newEvent.description || "", // Asegúrate de que 'description' esté presente
       };
-
+  
+      console.log("Datos enviados al servidor:", newEventPrisma); // Agregar log para verificar los datos
+  
       axios
         .post(
-          `/api/company/${newEvent.companieSelected.id}/event`,
+          `/api/company/${newEvent.taskSelected.id}/event`,
           newEventPrisma
         )
         .then(() => {
           toast({ title: "Evento creado" });
-
           router.refresh();
-        })
+        }) 
         .catch((error) => {
+          console.log(error);
           toast({
             title: "Error al crear el evento",
             variant: "destructive",
           });
           console.error(error);
         });
-
+  
       setNewEvent({
         eventName: "",
-        companieSelected: {
+        taskSelected: {
           name: "",
           id: "",
         },
+        description: "",
       });
-
+  
       setOnSaveNewEvent(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSaveNewEvent, selectedItem, events]);
-
   const handleEventClick = async (selected: any) => {
     if (
       window.confirm(
@@ -114,8 +118,8 @@ export function Calendar(props: CalendarProps) {
               >
                 <p className="font-bold">{currentEvent.title}</p>
                 <p>{formatDate(currentEvent.start)}</p>
-                {currentEvent.company && (
-                  <p className="text-sm text-gray-500">Empresa: {currentEvent.company.name}</p> 
+                {currentEvent.task && (
+                  <p className="text-sm text-gray-500">Tarea: {currentEvent.task.title}</p> 
                 )}
               </div>
             ))}
@@ -138,7 +142,7 @@ export function Calendar(props: CalendarProps) {
             }}
             height="80vh"
             initialView="dayGridMonth"
-            weekends={false}
+            weekends={true}
             events={events}
             eventContent={renderEventContent}
             editable={true}
@@ -146,8 +150,6 @@ export function Calendar(props: CalendarProps) {
             selectMirror={true}
             select={handleDateClick}
             eventClick={handleEventClick}
-            // longPressDelay={200}
-            // eventLongPressDelay={100}
             selectLongPressDelay={30}
           />
         </div>
@@ -156,7 +158,7 @@ export function Calendar(props: CalendarProps) {
         open={open}
         setOpen={setOpen}
         setOnSaveNewEvent={setOnSaveNewEvent}
-        companies={companies}
+        tasks={tasks}
         setNewEvent={setNewEvent}
       />
     </div>
@@ -164,11 +166,11 @@ export function Calendar(props: CalendarProps) {
 }
 
 function renderEventContent(eventInfo: EventContentArg) {
-  const companyName = eventInfo.event.extendedProps.company?.name || "No asignada";
+  const taskName = eventInfo.event.extendedProps.task?.title || "No asignada";
   return (
     <div className="bg-slate-200 dark:bg-background w-full p-1">
       <i>{eventInfo.event.title}</i>
-      <p className="text-sm text-gray-500">Empresa: {companyName}</p>
+      <p className="text-sm text-gray-500">Tarea: {taskName}</p>
     </div>
   );
 }

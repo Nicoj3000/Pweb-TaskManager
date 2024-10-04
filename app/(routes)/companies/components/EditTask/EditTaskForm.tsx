@@ -34,7 +34,7 @@ import { toast } from "@/components/ui/use-toast";
 import { UploadButton } from "@/utils/uploadthing";
 
 import { TaskFormProps } from "./TaskForm.types";
-import { formSchema } from "./CompanyForm.form";
+import { formSchema } from "./TaskForm.form";
 
 export function CompanyForm(props: TaskFormProps) {
   const { task, setOpenModalCreate} = props;
@@ -52,11 +52,11 @@ export function CompanyForm(props: TaskFormProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await Axios.patch(`/api/company/${task.id}`, values);
-      toast({ title: "Task edited" });
+      toast({ title: "Company edited" });
       router.refresh();
     } catch (error) {
       toast({
-        title: "Error editing task",
+        title: "Error editing company",
         variant: "destructive",
       });
     }
@@ -98,6 +98,7 @@ export function CompanyForm(props: TaskFormProps) {
           />
         </div>
         <Button type="submit">Edit Task</Button>
+        
       </form>
     </Form>
   );

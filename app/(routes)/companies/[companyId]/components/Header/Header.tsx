@@ -10,7 +10,7 @@ export function Header() {
         className="mr-2 w-5 h-5 cursor-pointer"
         onClick={() => router.push("/companies")}
       />
-      Edit company
+      Edit task
     </div>
   );
 }

@@ -1,13 +1,17 @@
-import { Company } from "@prisma/client";
+import { Task } from "@prisma/client";
 import { Dispatch, SetStateAction } from "react";
 
 export type FormEventProps = {
   setNewEvent: Dispatch<SetStateAction<{
       eventName: string,
-      companieSelected: { name: string; id: string }
+      taskSelected: { name: string; id: string },
+      description: string,
     }>
   >;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  companies: Company[];
+  tasks: Task[];
   setOnSaveNewEvent: Dispatch<SetStateAction<boolean>>;
 };
+
+
+

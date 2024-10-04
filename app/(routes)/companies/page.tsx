@@ -1,6 +1,5 @@
-import { List } from "lucide-react"
-import { HeaderCompanies } from "./components/HeaderCompanies"
-import { ListCompanies } from "./components/listCompanies"
+import { HeaderCompanies } from "./components/HeaderTask"
+import { ListCompanies } from "./components/listTask"
 
 export default function CompaniesPage() {
   return (

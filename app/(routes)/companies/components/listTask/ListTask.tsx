@@ -12,7 +12,7 @@ export  async function ListCompanies() {
     if (!userId) {
         return redirect("/")
     }
-    const companies = await db.company.findMany({
+    const companies = await db.task.findMany({
         where: {
             userId,
         },

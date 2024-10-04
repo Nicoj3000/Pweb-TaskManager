@@ -10,27 +10,25 @@ import {
   DialogTrigger,
   
 } from "@/components/ui/dialog"
-import { CirclePlus } from "lucide-react"
 import { useState } from "react"
-import { FormCreateCustomer } from "./FormCreateCustomer"
-
+import { FormCreateCustomer } from "./FormCreateTask"
 
 export  function HeaderCompanies() {
   const [openModalCreate, setOpenModalCreate] = useState(false)
   return (
     <div className="flex justify-between items-center ">
-      <h2 className="text-2xl">List of companies</h2>
+      <h2 className="text-2xl">List of task</h2>
 
       <Dialog open={openModalCreate} onOpenChange=
       {setOpenModalCreate}>
         <DialogTrigger asChild>
-          <Button>Create Company</Button>
+          <Button>Create Task</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[625px]">
           <DialogHeader>
-            <DialogTitle>Create Customer</DialogTitle>
+            <DialogTitle>Create Task</DialogTitle>
             <DialogDescription>
-              Create and configure your customer
+              Create and configure a task
             </DialogDescription>
           </DialogHeader>
 
