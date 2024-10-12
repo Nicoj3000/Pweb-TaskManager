@@ -1,28 +1,27 @@
 import {
   BarChart4,
-  Building2,
-  PanelsTopLeft,
-  Settings,
-  ShieldCheck,
   CircleHelpIcon,
-  Calendar,
+  BookCheck,
+  Bot,
+  CalendarDays,
+  BotMessageSquare,
 } from "lucide-react";
 
 export const dataGeneralSidebar = [
   {
-    icon: PanelsTopLeft,
+    icon: BotMessageSquare,
     label: "Chat with AI",
     href: "/",
   },
 
   {
-    icon: Building2,
+    icon: BookCheck,
     label: "Tasks",
     href: "/companies",
   },
 
   {
-    icon: Calendar,
+    icon: CalendarDays,
     label: "Calendar",
     href: "/tasks",
   },
@@ -40,4 +39,3 @@ export const dataToolsSidebar = [
     href: "/analytics",
   },
 ];
-

@@ -15,7 +15,7 @@ CREATE TABLE "Event" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "description" TEXT,
     "taskId" TEXT NOT NULL,
     "start" TIMESTAMP(3) NOT NULL,
     "allDay" BOOLEAN NOT NULL,

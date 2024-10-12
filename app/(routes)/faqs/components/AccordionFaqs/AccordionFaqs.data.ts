@@ -1,27 +1,52 @@
 export const dataFaqs = [
     {
         id: 1,
-        question: "¿Como puedo registrar mi empresa en el dashboard?",
-        answer: "Para registrar tu empresa en nuestro dashboard, simplemente sigue estos pasos: 1. Haz clic en el botón 'Registrarse' en la página de inicio. 2. Completa el formulario de registro con la información de tu empresa. 3. Haz clic en el botón 'Enviar' para completar el proceso de registro. Una vez que hayas completado estos pasos. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos."
+        question: "¿Qué es un FAQ?",
+        answer: "FAQ es la sigla de Frequently Asked Questions, que en español significa Preguntas Frecuentes. Es una recopilación de preguntas y respuestas que se realizan con frecuencia sobre un tema en particular."
     },
     {
         id: 2,
-        question: "¿Que funciones ofrece el dashboard para empresas?",
-        answer: "Nuestro dashboard para empresas ofrece una variedad de funciones utiles, incluyendo gestion de empleados, seguimiento de metricas clave, generacion de informes persanalizados, integracion con otras herramientas empresariales, y mas. Puedes encontrar una descripcion detallada de cada funcion en la seccion 'Caracteristicas'."
+        question: "¿Para qué sirve un FAQ?",
+        answer: "Un FAQ es una herramienta de ayuda que permite a los usuarios resolver dudas comunes sobre un producto, servicio o tema en particular. Ayuda a reducir la carga de trabajo del equipo de soporte y a mejorar la experiencia del usuario."
     },
     {
         id: 3,
-        question: "¿Como puedo exportar datos desde el dashboard?",
-        answer: "Exportar datos desde nuestro dashboard es muy sencillo. Simplemente sigue estos pasos: 1. Navega a la seccion de informes. 2. Selecciona el informe que deseas exportar. 3. Haz clic en el boton 'Exportar' y selecciona el formato de archivo deseado. Una vez que hayas completado estos pasos, el informe se descargara automaticamente a tu dispositivo. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos."
+        question: "¿Cómo se crea un FAQ?",
+        answer: "Para crear un FAQ, se deben identificar las preguntas frecuentes que los usuarios realizan sobre un tema en particular. Luego, se deben redactar respuestas claras y concisas para cada pregunta. Es importante que el FAQ esté organizado de manera lógica y sea fácil de navegar."
     },
     {
         id: 4,
-        question: "¿Que opciones de soporte tecnico estan disponibles?",
-        answer: "Ofrecemos una variedad de opciones de soporte tecnico para ayudarte a resolver cualquier problema que puedas tener con nuestro dashboard. Puedes contactarnos por correo electronico, telefono o chat en vivo para obtener asistencia inmediata. Nuestro equipo de soporte tecnico esta disponible las 24 horas del dia, los 7 dias de la semana para ayudarte en cada paso del camino. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos. Estamos aqui para ayudarte."
+        question: "¿Cómo se utiliza un FAQ?",
+        answer: "Los usuarios pueden acceder al FAQ a través de un sitio web, una aplicación móvil o cualquier otro canal de comunicación. Para encontrar la respuesta a su pregunta, los usuarios pueden navegar por las diferentes secciones del FAQ o utilizar la función de búsqueda."  
     },
     {
         id: 5,
-        question: "¿Como puedo actualizar mi plan de suscripcion?",
-        answer: "Para cambiar tu plan de suscripcion, simplemente sigue estos pasos: 1. Navega a la seccion de 'Configuracion' en tu cuenta. 2. Selecciona la opcion 'Actualizar plan'. 3. Selecciona el plan de suscripcion que deseas cambiar. 4. Completa el proceso de pago para confirmar el cambio de plan. Una vez que hayas completado estos pasos, tu plan de suscripcion se actualizara automaticamente. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos. Estamos aqui para ayudarte en cada paso del camino."
+        question: "¿Qué beneficios tiene un FAQ?",
+        answer: "Algunos de los beneficios de tener un FAQ son: reducir la carga de trabajo del equipo de soporte, mejorar la experiencia del usuario, aumentar la satisfacción del cliente, y aumentar la eficiencia en la resolución de problemas."
+    },
+    {
+        id: 6,
+        question: "¿Cómo se mantiene actualizado un FAQ?",
+        answer: "Para mantener actualizado un FAQ, es importante revisar periódicamente las preguntas y respuestas para asegurarse de que sigan siendo relevantes y precisas. También se pueden agregar nuevas preguntas y respuestas a medida que surjan nuevas dudas por parte de los usuarios."
+    },
+    {
+        id: 7,
+        question: "¿Qué características debe tener un buen FAQ?",
+        answer: "Un buen FAQ debe tener respuestas claras y concisas, estar organizado de manera lógica, ser fácil de navegar, y estar actualizado. También es importante que el FAQ sea accesible desde diferentes dispositivos y canales de comunicación."
+    },
+    {
+        id: 8,
+        question: "¿Cómo se evalúa la efectividad de un FAQ?",
+        answer: "La efectividad de un FAQ se puede evaluar a través de métricas como el número de visitas, el tiempo promedio de permanencia, la tasa de conversión, y la satisfacción del cliente. También se pueden realizar encuestas y recopilar comentarios de los usuarios para obtener retroalimentación sobre el FAQ."
+    },
+    {
+        id: 9,
+        question: "¿Qué diferencias hay entre un FAQ y un manual de usuario?",
+        answer: "Un FAQ se enfoca en responder preguntas frecuentes de los usuarios, mientras que un manual de usuario proporciona instrucciones detalladas sobre cómo utilizar un producto o servicio. El FAQ es más interactivo y dinámico, mientras que el manual de usuario es más estático y detallado."
+    },
+    {
+        id: 10,
+        question: "¿Qué herramientas se pueden utilizar para crear un FAQ?",
+        answer: "Algunas herramientas que se pueden utilizar para crear un FAQ son: plataformas de gestión de conocimiento, software de servicio al cliente, y plugins de FAQ para sitios web. También se pueden utilizar herramientas de diseño gráfico para crear un FAQ visualmente atractivo."
     }
 ]

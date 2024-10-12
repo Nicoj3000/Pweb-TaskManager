@@ -89,7 +89,7 @@ export function Calendar(props: CalendarProps) {
   const handleEventClick = async (selected: any) => {
     if (
       window.confirm(
-        `Are you sure you want to delete this event? ${selected.event.title}`
+        `Estas seguro que quieres eliminar este evento? => ${selected.event.title}`
       )
     ) {
       try {

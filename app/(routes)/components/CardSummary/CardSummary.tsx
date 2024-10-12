@@ -15,21 +15,21 @@ export function CardSummary(props: CardSummaryProps) {
         </div>
         <CustomTooltip content={tooltipText} />
       </div>
-      <div className=" flex gap-4 mt-2 md:mt-4">
+      <div className=" flex gap-4 mt-2 md:mt-4 items-center">
         <p className="text-2xl">{total}</p>
         <div
           className={cn(
-            `flex items-center gap-1 px-2 text-xs text-white rounded-lg h-[20px] bg-black dark:bg-secondary`
+            `flex items-center gap-1 px-2 text-xs text-white rounded-lg h-[20px] bg-black dark:bg-secondary `
           )}
         >
           {average}%
-          {average < 20 && (
+          {average < 0 && (
             <MoveDownRight strokeWidth={2} className="h-4 w-4 text-red-500" />
           )}
-          {average > 20 && average < 70 && (
+          {average > 0 && average < 70 && (
             <MoveUpRight strokeWidth={2} className="h-4 w-4 text-green-500" />
           )}
-          {average > 70 && average < 100 && (
+          {average > 5 && average < 100 && (
             <TrendingUp strokeWidth={2} className="h-4 w-4 text-green-500" />
           )}
         </div>

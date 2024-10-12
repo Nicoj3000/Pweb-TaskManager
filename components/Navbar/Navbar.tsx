@@ -1,7 +1,6 @@
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { UserButton } from "@clerk/nextjs";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import { SidebarRoutes } from "../SidebarRoutes";
 import { ToggleTheme } from "@/components/ToggleTheme";
 export function Navbar() {
@@ -21,11 +20,10 @@ export function Navbar() {
         </Sheet>
       </div>
       <div className="relative W-[300px]">
-        <Input placeholder="Search ..." className="rounded-lg" />
-        <Search
-          strokeWidth={1}
-          className="absolute top-2 right-2 text-gray-500"
-        />
+      <h1 className="text-xl font-bold ">
+            Start controlling your life
+          </h1>
+        
       </div>
       <div className="flex gap-x-2 items-center">
         <ToggleTheme />
