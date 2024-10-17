@@ -77,7 +77,7 @@ export function CompaniesChart(props: CompaniesChartProps) {
           <YAxis />
           <Tooltip content={<CustomTooltip active={true} payload={[]} />} />
           <Legend />
-          <Bar dataKey="EventsByTask" fill="#8884d8" />
+          <Bar dataKey="eventsByCompany" fill="#8884d8" /> {/* Corregido dataKey */}
         </BarChart>
       </ResponsiveContainer>
     </div>

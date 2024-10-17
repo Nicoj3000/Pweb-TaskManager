@@ -3,6 +3,7 @@ import { UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import { SidebarRoutes } from "../SidebarRoutes";
 import { ToggleTheme } from "@/components/ToggleTheme";
+import { RefreshButton } from "./RefreshComp";
 export function Navbar() {
   return (
     <nav
@@ -19,12 +20,11 @@ export function Navbar() {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="relative W-[300px]">
-      <h1 className="text-xl font-bold ">
-            Start controlling your life
-          </h1>
-        
+      <div className=" relative flex items-center W-[300px] gap-2 ">
+        <h1 className="text-xl font-sans ">Start controlling your life</h1>
+        <RefreshButton />
       </div>
+      
       <div className="flex gap-x-2 items-center">
         <ToggleTheme />
         <UserButton />
