@@ -12,8 +12,6 @@ export async function POST(request: Request, { params }: { params: { taskId: str
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    console.log("Datos recibidos:", { userId, data, taskId: params.taskId }); // Agregar log para verificar los datos
-
     const task = await db.task.findUnique({
       where: {
         id: params.taskId,
